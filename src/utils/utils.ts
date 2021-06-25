@@ -586,29 +586,15 @@ export async function sendRawTransaction(
   }
 
   try {
-    // const txHashRes = await promisify<string>(c => web3.eth.sendTransaction({
-    //   from,
-    //   to,
-    //   value,
-    //   data,
-    //   gas,
-    //   gasPrice
-    // }, c))
-
     const txHashRes = await promisify<string>((c) =>
-      (<any>window).ethereum.request(
+      web3.eth.sendTransaction(
         {
-          method: 'eth_sendTransaction',
-          params: [
-            {
-              from,
-              to,
-              value,
-              data,
-              gas,
-              gasPrice,
-            },
-          ],
+          from,
+          to,
+          value,
+          data,
+          gas,
+          gasPrice,
         },
         c
       )
