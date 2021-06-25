@@ -52,14 +52,6 @@ import { proxyABI } from '../abi/Proxy';
 
 export { WyvernProtocol };
 
-declare global {
-  interface Window {
-    ethereum: any;
-  }
-}
-
-window.ethereum = window.ethereum || {};
-
 export const annotateERC721TransferABI = (
   asset: WyvernNFTAsset
 ): AnnotatedFunctionABI => ({
@@ -604,7 +596,7 @@ export async function sendRawTransaction(
     // }, c))
 
     const txHashRes = await promisify<string>((c) =>
-      window.ethereum.request(
+      (<any>window).ethereum.request(
         {
           method: 'eth_sendTransaction',
           params: [

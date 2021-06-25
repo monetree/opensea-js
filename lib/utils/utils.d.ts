@@ -4,11 +4,6 @@ import * as Web3 from 'web3';
 import { AnnotatedFunctionABI, Schema } from 'wyvern-schemas/dist/types';
 import { Asset, AssetEvent, ECSignature, OpenSeaAccount, OpenSeaAsset, OpenSeaAssetBundle, OpenSeaAssetContract, OpenSeaCollection, OpenSeaFungibleToken, OpenSeaUser, Order, OrderJSON, Transaction, UnhashedOrder, UnsignedOrder, Web3Callback, WyvernAsset, WyvernBundle, WyvernFTAsset, WyvernNFTAsset } from '../types';
 export { WyvernProtocol };
-declare global {
-    interface Window {
-        ethereum: any;
-    }
-}
 export declare const annotateERC721TransferABI: (asset: WyvernNFTAsset) => AnnotatedFunctionABI;
 export declare const annotateERC20TransferABI: (asset: WyvernFTAsset) => AnnotatedFunctionABI;
 /**
